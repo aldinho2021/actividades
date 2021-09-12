@@ -1,6 +1,7 @@
 package com.empresa.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,5 +35,15 @@ public class MedicamentoController {
 		return salida;
 	}
 	
+	@RequestMapping("/verConsultaMedicamentoPorNombre")
+	public String verConsultaPorNombre() {
+		return "consultaMedicamentoPorNombre";
+	}
+	
+	@RequestMapping("consultaPorNombre")
+	@ResponseBody
+	public List<Medicamento> porNombre(String nombre){
+		return service.listaPorNombre("%"+ nombre + "%");
+	}
 	
 }
